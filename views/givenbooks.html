@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Sen&display=swap" rel="stylesheet">
+    <title>creating mailing system</title>
+    <style>
+        *{
+            font-family: 'Sen', sans-serif;
+        }
+        form{
+            font-size: large;
+        }
+        legend {
+            color: white;
+            display: block;
+            padding-left: 2px;
+            padding-right: 2px;
+            border: none;
+            margin-bottom: 20px;
+        }
+        h1{
+            color: white;
+        }
+        h3{
+            color:white;
+        }
+        body{
+            background-color: #151515;
+        }
+        fieldset {
+            border-color: #ac3c3c;
+        }
+        label{
+            color: white;
+            margin-right: 10px;
+        }
+        input{
+            padding-left: 10px;
+            font-size: 18px;
+            width: 80%;
+            height: 40px;
+            border-radius: 30px;
+        }
+        input[value="Submit"]{
+            font-size: large;
+        }
+        #gender{
+            border-radius: 10px;
+            font-size: large;
+            width: 30%;
+            height: 30px;
+        }
+        .button {
+            background-color: #dd3854;
+            border: none;
+            color: white;
+            padding: 18px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            width: 200px;
+            margin: 50px 2px;
+            cursor: pointer;
+        }
+        
+        span{
+            color: #dd3854;
+        }
+        a:link, a:visited {
+  background-color: #dd3854;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 50px 2px;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+        
+    </style>
+</head>
+  
+<body>
+    <center>
+        <h1>Books given for rent</h1>
+        <div id="aaa">
+
+
+        </div>
+            
+    </center>
+    <script>
+
+async function getBooks(){
+        const response = await fetch(`/givenproduct`);
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log(json);
+        return json;
+      }
+      let seats_div = document.querySelector('#aaa');
+      async function insert_seats(){
+        let ticket = await getBooks();
+        let res=``;
+        for(i=0;i<ticket.length;i++){
+          
+            res+=`<fieldset style="width:400px">
+                <legend>Details</legend>
+                <table>
+                    <tr>
+                        <h3>Book Title: ${ticket[i].title}</h3>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <h3>Rented By: ${ticket[i].name} </h3>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <h3>Number Of Days: ${ticket[i].nod} </h3>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <h3>Secret Key: ${ticket[i]._id} </h3>
+                    </tr>
+                    <br><br>
+                </table>
+            </fieldset> `
+          
+         
+
+
+        }
+        
+        
+        seats_div.innerHTML = res; 
+      }
+      insert_seats();
+
+    </script>
+</body>
+  
+</html>

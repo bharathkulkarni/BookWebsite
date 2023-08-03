@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Sen&display=swap" rel="stylesheet">
+    <title>creating mailing system</title>
+    <style>
+        *{
+            font-family: 'Sen', sans-serif;
+        }
+        form{
+            font-size: large;
+        }
+        legend {
+            color: white;
+            display: block;
+            padding-left: 2px;
+            padding-right: 2px;
+            border: none;
+            margin-bottom: 20px;
+        }
+        h1{
+            color: white;
+        }
+        h3{
+            color:white;
+        }
+        body{
+            background-color: #151515;
+        }
+        fieldset {
+            border-color: #ac3c3c;
+        }
+        label{
+            color: white;
+            margin-right: 10px;
+        }
+        input{
+            padding-left: 10px;
+            font-size: 18px;
+            width: 80%;
+            height: 40px;
+            border-radius: 30px;
+        }
+        input[value="Submit"]{
+            font-size: large;
+        }
+        #gender{
+            border-radius: 10px;
+            font-size: large;
+            width: 30%;
+            height: 30px;
+        }
+        .button {
+            background-color: #dd3854;
+            border: none;
+            color: white;
+            padding: 18px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            width: 200px;
+            margin: 50px 2px;
+            cursor: pointer;
+        }
+        
+        span{
+            color: #dd3854;
+        }
+        a:link, a:visited {
+  background-color: #dd3854;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 50px 2px;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+        
+    </style>
+</head>
+  
+<body>
+    <center>
+        <h1>BILL</h1>
+            <fieldset style="width:400px">
+                <legend>Bill Details</legend>
+                <table>
+                    <tr>
+                        <h3>Name: <span id="name"></span></h3>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <h3>Book Title: <span id="title"></span> </h3>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <h3>Year of edition: <span id="yoe"></span> </h3>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <h3>Price: <span id="rs"></span> <span> Rs</span> </h3>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <h3>Secret Key: <span id="sk"></span> </h3>
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <h3>Contact: <span id="cntct"></span> </h3>
+                    </tr>
+                    <br><br>
+                </table>
+            </fieldset>
+            <a href="index">Home page</a>
+        </form>
+    </center>
+    <script>
+console.log(location.href)
+var query = location.href.split("?")[1]; //A string of all parameters in the URL
+var params = query.split("&"); //Turns the string into an array of parameters
+var name;
+var title;
+var yoe;
+var price;
+var id; //To store the value of id
+var cntct;
+
+params.forEach((param, index) => {
+    //This checks each key-value pair, in the format key=value, for the specific id key we want
+    var key = param.split("=")[0]; //In id=123, this would be "id"
+    var value = param.split("=")[1]; //In id=123, this would be "123" (as a String)
+    if (key == "id") id = value;
+    if (key == "name") name = value;
+    if (key == "title") title = value;
+    if (key == "yoe") yoe = value;
+    if (key == "price") price = value;
+    if (key == "contact") cntct = value;
+});
+
+        let url = new URL(window.location.href);
+         let fname='';
+         let i;
+         for(i=0;i<name.split('+').length;i++){
+            fname=fname+" "+name.split('+')[i]
+         }
+         let ftitle='';
+        
+         for(i=0;i<title.split('+').length;i++){
+            ftitle=ftitle+" "+title.split('+')[i]
+         }
+
+        document.querySelector("#name").innerHTML = fname;
+        document.querySelector("#title").innerHTML = ftitle;
+        document.querySelector("#yoe").innerHTML = yoe;
+        document.querySelector("#rs").innerHTML = price;
+        document.querySelector("#sk").innerHTML = id;
+        document.querySelector("#cntct").innerHTML = cntct;
+        document.write(theResponseHTML)
+    </script>
+</body>
+  
+</html>

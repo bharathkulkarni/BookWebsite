@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Sen&display=swap" rel="stylesheet">
+    <title>Balance</title>
+    <style>
+        *{
+            font-family: 'Sen', sans-serif;
+        }
+        form{
+            font-size: large;
+        }
+        legend {
+            color: white;
+            display: block;
+            padding-left: 2px;
+            padding-right: 2px;
+            border: none;
+            margin-bottom: 20px;
+        }
+        h1{
+            color: white;
+        }
+        body{
+            background-color: #151515;
+        }
+        fieldset {
+            border-color: #ac3c3c;
+        }
+        label{
+            color: white;
+            margin-right: 10px;
+        }
+        input{
+            padding-left: 10px;
+            font-size: 18px;
+            width: 80%;
+            height: 40px;
+            border-radius: 30px;
+        }
+        input[value="Submit"]{
+            font-size: large;
+        }
+        #gender{
+            border-radius: 10px;
+            font-size: large;
+            width: 30%;
+            height: 30px;
+        }
+        .button {
+            background-color: #dd3854;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+  
+<body>
+    <center>
+        <h2 style="color: white;">Balance</h2>
+        <h1 id="show" style="color: white;"></h1>
+        <form action="/money" method="post">
+            <fieldset style="width:400px">
+                <legend>Deposit</legend>
+                <table>
+                    <br>
+                    <tr>
+                        <input name="amount" type="number" placeholder="amount">
+                    </tr>
+                    <br><br>
+                    <tr><input  class="button" type="submit" value="Submit">
+                    </tr>
+                    <br><br>
+                    
+                </table>
+            </fieldset>
+        </form>
+    </center>
+</body>
+<script>
+    async function getBalance(){
+        const response = await fetch(`/balance`);
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log(json);
+        let elt = document.querySelector('#show');
+        elt.innerHTML=json.balance;
+      }
+      getBalance()
+</script>
+  
+</html>

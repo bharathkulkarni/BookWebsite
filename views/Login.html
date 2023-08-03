@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Sen&display=swap" rel="stylesheet">
+    <title>creating mailing system</title>
+    <style>
+        *{
+            font-family: 'Sen', sans-serif;
+        }
+        form{
+            font-size: large;
+        }
+        legend {
+            color: white;
+            display: block;
+            padding-left: 2px;
+            padding-right: 2px;
+            border: none;
+            margin-bottom: 20px;
+        }
+        h1{
+            color: white;
+        }
+        body{
+            background-color: #151515;
+        }
+        fieldset {
+            border-color: #ac3c3c;
+        }
+        label{
+            color: white;
+            margin-right: 10px;
+        }
+        input{
+            padding-left: 10px;
+            font-size: 18px;
+            width: 80%;
+            height: 40px;
+            border-radius: 30px;
+        }
+        input[value="Submit"]{
+            font-size: large;
+        }
+        #gender{
+            border-radius: 10px;
+            font-size: large;
+            width: 30%;
+            height: 30px;
+        }
+        .button {
+            background-color: #dd3854;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+  
+<body>
+    <center>
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <fieldset style="width:400px">
+                <legend>Login Details</legend>
+                <table>
+                    <tr>
+                        <input type="text" name="username" 
+                            placeholder="username@gmail.com" id="e">
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <input name="password" type="password" placeholder="Password">
+                    </tr>
+                    <br><br>
+                    <tr><input class="button" type="submit" 
+                        onclick="return validate()" value="Submit">
+                    </tr>
+                    <br><br>
+                    <tr>
+                        <a href="Register" style="color: white;" title="Click here if you are a new user">Register?</a>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </center>
+    <script>
+        let url = new URL(window.location.href);
+        let msg = url.searchParams.get('msg');
+        if(msg){
+            alert(msg)
+        }
+    </script>
+</body>
+  
+</html>
