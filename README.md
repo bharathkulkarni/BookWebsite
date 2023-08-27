@@ -1,0 +1,1 @@
+A website where users can register,login and buy new or old books, sell the used books, rent books within a community such as an organization, college. The website is developed using html, css, javascript, nodejs and express.
