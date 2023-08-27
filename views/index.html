@@ -211,8 +211,8 @@ body {
       }
       insert_admin();
 
-      let seats_div = document.querySelector('#aaa');
-      async function insert_seats(){
+      let books_div = document.querySelector('#aaa');
+      async function insert_books(){
         let book = await getBooks();
         let res=``;
         for(i=0;i<book.length;i++){
@@ -238,9 +238,9 @@ body {
         }
         
         
-        seats_div.innerHTML = res; 
+        books_div.innerHTML = res; 
       }
-      insert_seats();
+      insert_books();
 
       function openForm() {
   document.getElementById("myForm").style.display = "block";

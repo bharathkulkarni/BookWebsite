@@ -105,8 +105,8 @@ async function getBooks(){
         console.log(json);
         return json;
       }
-      let seats_div = document.querySelector('#aaa');
-      async function insert_seats(){
+      let books_div = document.querySelector('#aaa');
+      async function insert_books(){
         let ticket = await getBooks();
         let res=``;
         for(i=0;i<ticket.length;i++){
@@ -135,9 +135,9 @@ async function getBooks(){
         }
         
         
-        seats_div.innerHTML = res; 
+        books_div.innerHTML = res; 
       }
-      insert_seats();
+      insert_books();
 
     </script>
 </body>

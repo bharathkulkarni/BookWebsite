@@ -143,8 +143,8 @@ app.post('/users', function(req, res) {
 })
 
 app.get('/newproduct', async (req, res) => {
-    const movies = await newproduct.find({})
-    res.send(movies)
+    const bills = await newproduct.find({})
+    res.send(bills)
 })
 
 app.get('/admin', async (req, res) => {
@@ -153,23 +153,23 @@ app.get('/admin', async (req, res) => {
 })
 
 app.get('/usedproduct', async (req, res) => {
-    const movies = await usedproduct.find({})
-    res.send(movies)
+    const bills = await usedproduct.find({})
+    res.send(bills)
 })
 
 app.get('/rentproduct', async (req, res) => {
-    const movies = await rentproduct.find({})
-    res.send(movies)
+    const bills = await rentproduct.find({})
+    res.send(bills)
 })
 
 app.get('/soldproduct', async (req, res) => {
-    const movies = await ticket.find({owner:req.user.username})
-    res.send(movies)
+    const bills = await ticket.find({owner:req.user.username})
+    res.send(bills)
 })
 
 app.get('/givenproduct', async (req, res) => {
-    const movies = await ticket.find({renter:req.user.username})
-    res.send(movies)
+    const bills = await ticket.find({renter:req.user.username})
+    res.send(bills)
 })
 
 app.get('/balance', async (req, res) => {
